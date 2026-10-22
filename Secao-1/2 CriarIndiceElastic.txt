@@ -1,0 +1,30 @@
+
+1)  Baixar o Schema Json de exemplo -> 
+        wget http://media.sundog-soft.com/es7/shakes-mapping.json
+2)  Criar o indice no elastic->
+        curl -H 'Content-Type: application/json' -X PUT 'http://127.0.0.1:9200/NomeDoIndice' --data-binary @shakes-mapping.json
+
+3) Baixar a Obra de shakepeare
+        wget --no-check-certificate https://media.sundog-soft.com/es7/shakespeare_7_0.json
+        --no-check-certificate esse parâmetro serve para ignorar o certificado da CAP
+
+4) Ver se esta tudo ok->
+     curl -XGET 127.0.0.1:9200
+     Resultado->
+     {
+        "name" : "node-1",
+        "cluster_name" : "elasticsearch",
+        "cluster_uuid" : "1HepNRzhQWyWe6GeF9opjQ",
+        "version" : {
+            "number" : "7.17.29",
+            "build_flavor" : "default",
+            "build_type" : "deb",
+            "build_hash" : "580aff1a0064ce4c93293aaab6fcc55e22c10d1c",
+            "build_date" : "2025-06-19T01:37:57.847711500Z",
+            "build_snapshot" : false,
+            "lucene_version" : "8.11.3",
+            "minimum_wire_compatibility_version" : "6.8.0",
+            "minimum_index_compatibility_version" : "6.0.0-beta1"
+        },
+        "tagline" : "You Know, for Search"
+    }
