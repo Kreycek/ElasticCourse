@@ -5,7 +5,8 @@
         curl -H 'Content-Type: application/json' -X PUT 'http://127.0.0.1:9200/NomeDoIndice' --data-binary @shakes-mapping.json
 
 3) Baixar a Obra de shakepeare
-        wget --no-check-certificate https://media.sundog-soft.com/es7/shakespeare_7_0.json
+        wget http://media.sundog-soft.com/es7/shakespeare_7.0.json
+
         --no-check-certificate esse parâmetro serve para ignorar o certificado da CAP
 
 4) Ver se esta tudo ok->
@@ -28,3 +29,16 @@
         },
         "tagline" : "You Know, for Search"
     }
+
+5) Inserir no indice
+   1)  curl -H 'Content-Type: application/json' -X POST '127.0.0.1:9200/shakespeare/_bulk?pretty' --data-binary @shakespeare_7.0.json
+
+6) Fazer uma busca
+    1) curl -H 'Content-Type: application/json' -X GET '127.0.0.1:9200/shakespeare/_search?pretty' -d '
+                 {
+                 "query":{
+                 "match_phrase":{
+                 "text_entry":"to be or not to be"
+                                }
+                        }
+                 }'
