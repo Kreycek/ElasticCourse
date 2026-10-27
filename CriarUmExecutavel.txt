@@ -1,0 +1,13 @@
+1) Entrar no seu diretório desejado ex: diretório do usuário
+2) Criar uma pasta exemplo -> mkdir/bin
+3) Entrar na pasta e digitar nano curl -> e dentro do arquivo digitar o que está abaixo e depois salvar
+                                             #!/bin/bash
+                                             /usr/bin/curl - H "Content-Type:application/json" "$@"
+4) Tornar esse arquivo executável
+     chmod a+x curl
+5) Voltar para o diretório home
+     cd ~
+6) Para manter a alteração executar um script que permita que o crul se torne um comando default mesmo quando você reinicie a máquina
+    source .profile
+7) teste com o comando 
+    which curl
